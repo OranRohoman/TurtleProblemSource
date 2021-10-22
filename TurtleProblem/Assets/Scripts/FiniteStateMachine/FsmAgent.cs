@@ -7,9 +7,9 @@ using System.Collections.Generic;
 // class is attached to physical property so that the front updates when new state is encountered.
 public class FsmAgent: MonoBehaviour{
     public State CurrentState;
-    private GraphHandler _GHandler;
+    public GraphHandler GHandler;
     // current node the agent is on.
-    private GraphNode _currentNode = new GraphNode((0,0));
+    public GraphNode CurrentNode = new GraphNode((0,0));
     
     //relative rotation of the agent.
     public int _lookRotation = 0;
@@ -22,17 +22,17 @@ public class FsmAgent: MonoBehaviour{
     public void begin(Queue<State> states)
     {
         //Unity specific code for generating an instance of the Graph Handler
-        //equivilant to _GHandler = new GraphHandler();
+        //equivilant to GHandler = new GraphHandler();
         this.gameObject.AddComponent<GraphHandler>();
-        _GHandler = this.gameObject.GetComponent<GraphHandler>();
+        GHandler = this.gameObject.GetComponent<GraphHandler>();
         
         //initialize origin of graph
-        _currentNode = _GHandler.initialize();
-        _currentNode.origin = true;
+        CurrentNode = GHandler.initialize();
+        CurrentNode.origin = true;
         
 
         //mark origin
-        _currentNode.markWithColor(Color.magenta);
+        CurrentNode.markWithColor(Color.magenta);
         //iterate through the states and activate their unique function.
         Actions = states;
         while(Actions.Count > 0)
@@ -43,44 +43,22 @@ public class FsmAgent: MonoBehaviour{
 
         //mark final node
         VisualUpdate();
-        _currentNode.markWithColor(Color.cyan);
+        CurrentNode.markWithColor(Color.cyan);
         
     }
 
     //Mechanic that turns Counter Clock Wise
-    public void TurnCCW()
-    {
-        _lookRotation -= 90;   
-    }
+    public virtual void TurnCCW(){}
 
     //Mechanic that turns Clock Wise
-    public void TurnCW()
-    {
-        _lookRotation +=90;
-    }
+    public virtual void TurnCW(){}
 
     //Mechanic that Moves forward based on current _lookRotation
-    public void Traverse()
-    {
-        //Find new coordinates
-        (int, int) newCoords =  DetermineCoords();
-        GraphNode oldNode = _currentNode;
-        
-        //update current node
-        _currentNode = _GHandler.RetrieveNode(newCoords);
-        _currentNode.VisitCount++;
-        _currentNode.markWithColor();
-        
-
-        //Visualization of movement
-        _GHandler.drawPath(oldNode,_currentNode,_lookRotation);
-        this.gameObject.transform.position = new Vector3(newCoords.Item1,newCoords.Item2,-1);
-        UiHelper.GetInstance().addToStack(_currentNode);
-    }
+    public virtual void Traverse(){ }
    
     public (int,int) DetermineCoords()
     {
-        (int,int) current = _currentNode.Coordinates;
+        (int,int) current = CurrentNode.Coordinates;
         int rotationCopy = _lookRotation;
         List<(int,int)> potentialCoords = new List<(int, int)>(){
             (current.Item1,current.Item2+1), // North
@@ -107,9 +85,9 @@ public class FsmAgent: MonoBehaviour{
     }
     public void destroySelf()
     {
-        if(_GHandler != null)
+        if(GHandler != null)
         {
-            _GHandler.selfDestruct();
+            GHandler.selfDestruct();
 
         }
         Destroy(this.gameObject);

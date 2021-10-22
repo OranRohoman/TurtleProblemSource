@@ -3,13 +3,12 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - CameraHandler
     - FileSelector
-    - FsmAgent
+    - Turtle
     - UiHelper
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -85,8 +84,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2224}
     - Class: 114
-      Script: {instanceID: 2264}
-    - Class: 114
       Script: {instanceID: 2410}
     - Class: 114
       Script: {instanceID: 2644}
@@ -118,6 +115,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 4706}
     - Class: 114
       Script: {instanceID: 5080}
+    - Class: 114
+      Script: {instanceID: 17330}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -241,7 +240,7 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
-      Hash: ef3cef130394ad6476e10ae2bad21b18
+      Hash: 2d566888d7aaaf9d4024722a36251b45
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FsmAgent
@@ -683,6 +682,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.2D.IK.Runtime.dll
     namespaceName: UnityEngine.U2D.IK
     className: FabrikSolver2D
+  - hash:
+      serializedVersion: 2
+      Hash: 2d566888d7aaaf9d4024722a36251b45
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Turtle
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

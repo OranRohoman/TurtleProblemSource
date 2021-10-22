@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3575118632894210732}
   - component: {fileID: 9136696396993731931}
-  - component: {fileID: 2367375786404168265}
+  - component: {fileID: 3556781022236656641}
   m_Layer: 0
   m_Name: Turtle
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2367375786404168265
+--- !u!114 &3556781022236656641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,7 +92,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4491760375037492424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 472a048547c3a48438f9f9954ab7acb4, type: 3}
+  m_Script: {fileID: 11500000, guid: aad79322e5577fc49bfc1c0f851bfdd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GHandler: {fileID: 0}
   _lookRotation: 0
